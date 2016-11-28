@@ -16,7 +16,7 @@ var defaultOptions = {
   performanceBudget: {} // performanceBudget object
 }
 
-var louis = function(options, callback){
+var louis = function(options, callback) {
   options =                   options || {};
   options.runs =              defaultOptions.runs;
   options.engine =            options.engine || defaultOptions.engine;
@@ -29,21 +29,20 @@ var louis = function(options, callback){
       (options.url) ? options.url.replace(/^(https?|ftp):\/\//, '') + '.json' :  defaultOptions.outputFileName;
   options.proxy =             options.proxy || defaultOptions.proxy;
 
-  if(!!options.url)
-  {
-    options.url = options.url || defaultOptions.url;
-  }
-  else{
-    options.url = options.url || defaultOptions.url;
+  if (options.url) {
+    analyze(options, callback);
+  } else {
+    options.url = defaultOptions.url;
+
     connect.server({
       port: 8888
     });
+
+    analyze(options, function() {
+      connect.serverClose();
+      callback();
+    });
   }
-
-  analyze(options, function(){
-    connect.serverClose();    
-  });
-
 } 
 
 module.exports = louis
