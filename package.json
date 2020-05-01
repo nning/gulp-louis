@@ -10,7 +10,9 @@
   "description": "Performance measurment plugin for gulp based on Phantomas",
   "main": "louis.js",
   "scripts": {
-    "test": "node node_modules/.bin/mocha"
+    "test": "node node_modules/.bin/mocha",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "keywords": [
     "perfmatters, phantomas, performance, speed, analyze, website,website performance tools, website performance monitoring, website performance metrics, website performance optimization, website performance analyzer"
@@ -21,11 +23,13 @@
     "gulp-connect": "^5.0.0",
     "gulp-util": "^3.0.7",
     "joi": "^9.0.4",
-    "phantomas": "^1.17.0"
+    "phantomas": "^1.17.0",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "gulp": "^3.9.1",
     "mocha": "^3.1.0"
-  }
+  },
+  "snyk": true
 }
